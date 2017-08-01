@@ -1,1 +1,1 @@
-A Sample Javascript workshop Exersise
+A Sample Javascript workshop Exersise using jQuery
