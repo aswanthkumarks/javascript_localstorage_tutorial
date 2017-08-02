@@ -23,9 +23,7 @@ $(document).ready(function() {
   /**
    * To register a user to the system. save the user details in browser localStorage
    * with email as key
-   * @return {[type]} [description]
    */
-
   $('#triggerRegister').click(function(){
     const name = $("#reg-name").val();
     const email = $("#reg-email").val();
