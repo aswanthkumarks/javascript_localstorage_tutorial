@@ -23,20 +23,25 @@
       left: 21px;
       top: 21px;
     }
-    .maskWrapper table {
-      width: 500px;
-      height: 500px;
+    .maskWrapper ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      width: 503px;
+      height: 503px;
       border: 1px solid #ccc;
       position: absolute;
       top: 0;
       left: 0;
     }
-    .maskWrapper table td{
+    .maskWrapper ul li{
+      float: left;
       width: 100px;
       height: 100px;
       font-size: 30px;
       border: 1px solid #ccc;
       text-align: center;
+      padding-top: 25px;
     }
     .controls{
       width: 120px;
@@ -46,6 +51,10 @@
   <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
   <script type="text/javascript">
   $(document).ready(function() {
+
+    /**
+     * On Control button click move the mask
+     */
     $('.controls .btn').click(function(){
       const dir = $(this).attr('rel');
       const mask = $('#mask');
@@ -70,6 +79,26 @@
       }
       mask.offset(offset);
     });
+
+    /**
+     * Print column content of each li using find and each function
+     */
+    $('#printBtn').click(function(){
+      $('.maskWrapper').find('li').each(function(index){
+        let item = $("<span />");
+        item.text(";  "+index+": "+$(this).text());
+        $('#printBox').append(item);
+      });
+    });
+
+    /**
+     * Clear printDiv Content
+     */
+    $('#printClear').click(function(){
+      $('#printBox').children().remove();
+    });
+
+
   });
   </script>
 </head>
@@ -95,46 +124,42 @@
       </table>
     </div>
     <div class="maskWrapper">
-      <table>
-        <tr>
-          <td>A</td>
-          <td>B</td>
-          <td>C</td>
-          <td>D</td>
-          <td>E</td>
-        </tr>
-        <tr>
-          <td>F</td>
-          <td>G</td>
-          <td>H</td>
-          <td>I</td>
-          <td>J</td>
-        </tr>
-        <tr>
-          <td>K</td>
-          <td>L</td>
-          <td>M</td>
-          <td>N</td>
-          <td>O</td>
-        </tr>
-        <tr>
-          <td>P</td>
-          <td>Q</td>
-          <td>R</td>
-          <td>S</td>
-          <td>T</td>
-        </tr>
-        <tr>
-          <td>U</td>
-          <td>V</td>
-          <td>W</td>
-          <td>X</td>
-          <td>Y</td>
-        </tr>
-      </table>
+      <ul>
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+        <li>D</li>
+        <li>E</li>
+        <li>F</li>
+        <li>G</li>
+        <li>H</li>
+        <li>I</li>
+        <li>J</li>
+        <li>K</li>
+        <li>L</li>
+        <li>M</li>
+        <li>N</li>
+        <li>O</li>
+        <li>P</li>
+        <li>Q</li>
+        <li>R</li>
+        <li>S</li>
+        <li>T</li>
+        <li>U</li>
+        <li>V</li>
+        <li>W</li>
+        <li>X</li>
+        <li>Y</li>
+      </ul>
       <div id="mask">
         <i class="glyphicon glyphicon-ban-circle"></i>
       </div>
+    </div>
+    <div>
+      <div id="printBox"></div>
+      <input type="button" value="print cols" id="printBtn" class="btn btn-default"/>
+      <input type="button" value="Clear" id="printClear" class="btn btn-default"/>
+      <br />
     </div>
   </div>
 </body>
